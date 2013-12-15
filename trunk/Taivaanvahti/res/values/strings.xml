@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">Taivaanvahti</string>
+    <string name="menu_reload">Lataa uudelleen</string>
+    <string name="title_activity_main">Havainnot aikajärjestyksessä</string>
+    <string name="otsikko">Aurinko - 6.8.2012 klo 07.36 Hankasalmi</string>
+    <string name="havaitsija">Arto Oksanen, Jyväskylän Sirius</string>
+    <string name="havainto">Hankasalmen radioteleskoopilla havaittu Auringon soihtupurkaus (flare) aikaisin aamulla. GOES röntgenluokitus M1.6. Kaaviossa Auringon radioteho 10 GHz taajuudella. Kello UTC aikaa.</string>
+    <string name="ttiedot">Tekniset tiedot: Hankasalmen observatorion 3 m radioteleskooppi + 10 GHz LNB + diodivastaanotin kahdeksankanavaisella 10 bitin AD-muuntimella. Näytteenotto 100 Hz.</string>
+    <string name="copyright">Copyright &#169; 2012 Arto Oksanen. All rights reserved.</string>
+</resources>

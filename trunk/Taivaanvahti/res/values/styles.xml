@@ -1,0 +1,10 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Light" />
+
+    <style name="Splash" parent="android:Theme">
+        <item name="android:windowBackground">@drawable/background</item>
+        <item name="android:windowNoTitle">false</item>
+    </style>
+    
+</resources>

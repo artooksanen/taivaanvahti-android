@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:paddingLeft="2dp"
+        android:scrollbars="vertical" >
+
+        <TextView
+            android:id="@+id/otsikko"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="14dp" />
+        
+        <TextView
+            android:id="@+id/aikajapaikka"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/havaitsija"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/havainto"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:autoLink="web"
+            android:textColor="#000000"
+            android:textSize="11dp" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kuvat" />
+        
+        
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="3dp"
+            android:clickable="false"
+            android:onClick="imageClick1" />
+        
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="3dp"
+        android:clickable="false"
+        android:onClick="imageClick2" />
+    
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="3dp"
+            android:clickable="false"
+            android:onClick="imageClick3" />
+        
+        
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="3dp"
+            android:clickable="false"
+            android:onClick="imageClick4" />
+        
+        <TextView
+            android:id="@+id/copyright"
+            android:layout_width="242dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="9dp" />
+<TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tekniset tiedot" />
+        
+        <TextView
+            android:id="@+id/ttiedot"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="11dp" />
+        
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kommentit" />
+        
+        <TextView
+            android:id="@+id/kommentit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+          android:autoLink="web"
+            android:textColor="#000000"
+            android:textSize="10dp" />     
+               
+        <TextView
+            android:id="@+id/txtPosition"
+            android:layout_width="242dp"
+            android:layout_height="wrap_content"
+            android:text="position"
+            android:textColor="#000000"
+            android:autoLink="web"
+            android:textSize="8dp" />
+
+
+    </LinearLayout>
+
+</ScrollView>
