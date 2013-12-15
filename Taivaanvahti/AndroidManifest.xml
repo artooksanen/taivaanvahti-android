@@ -1,0 +1,32 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="fi.jklsirius.taivaanvahti"
+    android:versionCode="11"
+    android:versionName="1.0-9" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+<uses-permission android:name="android.permission.INTERNET"/>
+<application
+        android:icon="@drawable/tv_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" 
+            android:theme="@style/Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SingleListItem"
+                    android:label="Single Item Selected"></activity>
+     <activity android:name=".HavaintoActivity"
+                    android:label="Havainto"></activity>
+     <activity android:name=".ImagesActivity"
+                    android:label="Single Image"></activity>
+    </application>
+
+</manifest>

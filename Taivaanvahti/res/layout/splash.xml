@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"             
+        android:text="Taivaanvahti"
+        android:textColor="#00ff00"
+        android:textSize="20dp" />
+  
+          <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"             
+        android:text="Ursan havaintojärjestelmä"
+        android:textColor="#00ff00"
+        android:textSize="10dp" />
+                  
+            <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"             
+        android:text="v 0.1-1"
+        android:textColor="#00ff00"
+        android:textSize="10dp" />
+
+</LinearLayout>
