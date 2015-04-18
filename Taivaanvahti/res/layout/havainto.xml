@@ -2,8 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
+    android:orientation="vertical">
+
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -12,84 +13,119 @@
         android:orientation="vertical"
         android:paddingLeft="2dp"
         android:scrollbars="vertical" >
-
+
         <TextView
             android:id="@+id/otsikko"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="#000000"
-            android:textSize="14dp" />
-        
+            android:textSize="16dp" />
+
         <TextView
             android:id="@+id/aikajapaikka"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="#000000"
-            android:textSize="13dp" />
-
+            android:textSize="12dp" />
+
         <TextView
             android:id="@+id/havaitsija"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="#000000"
-            android:textSize="12dp" />
-
+            android:textSize="14dp" />
+
         <TextView
             android:id="@+id/havainto"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text=""
             android:autoLink="web"
+            android:text=""
             android:textColor="#000000"
             android:textSize="11dp" />
 
-        <TextView
+        <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kuvat" />
-        
-        
+
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="3dp"
+            android:layout_weight="0.66"
+            android:clickable="false"
+            android:onClick="imageClick1" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="3dp"
             android:clickable="false"
-            android:onClick="imageClick1" />
-        
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginBottom="3dp"
-        android:clickable="false"
-        android:onClick="imageClick2" />
-    
+            android:onClick="imageClick2" />
+
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="3dp"
             android:clickable="false"
             android:onClick="imageClick3" />
-        
-        
+
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="3dp"
             android:clickable="false"
             android:onClick="imageClick4" />
         
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="3dp"
+            android:clickable="false"
+            android:onClick="imageClick5" />
+        
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="3dp"
+            android:clickable="false"
+            android:onClick="imageClick6" />
+        
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="3dp"
+            android:clickable="false"
+            android:onClick="imageClick7" />
+        
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="3dp"
+            android:clickable="false"
+            android:onClick="imageClick8" />
+
         <TextView
             android:id="@+id/copyright"
             android:layout_width="242dp"
@@ -97,12 +133,13 @@
             android:text=""
             android:textColor="#000000"
             android:textSize="9dp" />
-<TextView
+
+        <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tekniset tiedot" />
-        
+
         <TextView
             android:id="@+id/ttiedot"
             android:layout_width="fill_parent"
@@ -110,32 +147,31 @@
             android:text=""
             android:textColor="#000000"
             android:textSize="11dp" />
-        
+
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kommentit" />
-        
+            android:text="Kommentit"/>
+
         <TextView
             android:id="@+id/kommentit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:autoLink="web"
             android:text=""
-          android:autoLink="web"
             android:textColor="#000000"
-            android:textSize="10dp" />     
-               
+            android:textSize="10dp" />
+
         <TextView
             android:id="@+id/txtPosition"
             android:layout_width="242dp"
             android:layout_height="wrap_content"
+            android:autoLink="web"
             android:text="position"
             android:textColor="#000000"
-            android:autoLink="web"
+            android:layout_marginBottom="10dp"
             android:textSize="8dp" />
-
-
     </LinearLayout>
 
 </ScrollView>

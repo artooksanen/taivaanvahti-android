@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -16,10 +17,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.squareup.picasso.Picasso;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,7 +43,21 @@ public class HavaintoActivity extends Activity {
     ImageView image2;
     ImageView image3;
     ImageView image4;
-    	
+    ImageView image5;
+    ImageView image6;
+    ImageView image7;
+    ImageView image8;
+
+   // URL url1 = null;
+    String url1 = null;
+    String url2 = null;
+    String url3 = null;
+    String url4 = null;
+    String url5 = null;
+    String url6 = null;
+    String url7 = null;
+    String url8 = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	
@@ -50,6 +68,10 @@ public class HavaintoActivity extends Activity {
        image2 = (ImageView) findViewById(R.id.imageView2);
        image3 = (ImageView) findViewById(R.id.imageView3);
        image4 = (ImageView) findViewById(R.id.imageView4);
+       image5 = (ImageView) findViewById(R.id.imageView5);
+       image6 = (ImageView) findViewById(R.id.imageView6);
+       image7 = (ImageView) findViewById(R.id.imageView7);
+       image8 = (ImageView) findViewById(R.id.imageView8);
               // ImageView image3 = (ImageView) findViewById(R.id.imageView3);
        Intent i = getIntent();
        // getting attached intent data
@@ -61,16 +83,18 @@ public class HavaintoActivity extends Activity {
         //http://www.ursa.fi/~obsbase/search.php?format=json&id=7105
         
         DownloadWebPageTask task = new DownloadWebPageTask();
-        task.execute(new String[] { "http://www.ursa.fi/~obsbase/search.php?format=json&id="+id });
+//        task.execute(new String[] { "http://www.ursa.fi/~obsbase/search.php?format=json&id="+id });
+        task.execute(new String[] { "http://www.taivaanvahti.fi/app/api/search.php?format=json&id="+id });
         DownloadCommentsTask comments = new DownloadCommentsTask();
-        comments.execute(new String[] { "http://www.ursa.fi/~obsbase/comment_search.php?format=json&observation="+id });
+//        comments.execute(new String[] { "http://www.ursa.fi/~obsbase/comment_search.php?format=json&observation="+id });
+        comments.execute(new String[] { "http://www.taivaanvahti.fi/app/api/comment_search.php?format=json&observation="+id });
       }
     
     public void imageClick1(View view) {  
     	  //Implement image click function  
     	
       	 // selected item
-          String url = image[0];
+          String url = url1.toString();
 
           // Launching new Activity on selecting single List Item
           Intent i = new Intent(getApplicationContext(), ImagesActivity.class);
@@ -84,7 +108,7 @@ public class HavaintoActivity extends Activity {
   	  //Implement image click function  
   	
     	 // selected item
-        String url = image[1];
+        String url = url2.toString();
 
         // Launching new Activity on selecting single List Item
         Intent i = new Intent(getApplicationContext(), ImagesActivity.class);
@@ -98,7 +122,7 @@ public class HavaintoActivity extends Activity {
     	  //Implement image click function  
     	
       	 // selected item
-          String url = image[2];
+          String url = url3.toString();
 
           // Launching new Activity on selecting single List Item
           Intent i = new Intent(getApplicationContext(), ImagesActivity.class);
@@ -109,19 +133,75 @@ public class HavaintoActivity extends Activity {
       	} 
     
     public void imageClick4(View view) {  
-    	  //Implement image click function  
-    	
-      	 // selected item
-          String url = image[3];
+  	  //Implement image click function  
+  	
+    	 // selected item
+        String url = url4.toString();
 
-          // Launching new Activity on selecting single List Item
-          Intent i = new Intent(getApplicationContext(), ImagesActivity.class);
-          // sending data to new activity
-          i.putExtra("url", url);
-          startActivity(i);
-      	
-      	} 
-    
+        // Launching new Activity on selecting single List Item
+        Intent i = new Intent(getApplicationContext(), ImagesActivity.class);
+        // sending data to new activity
+        i.putExtra("url", url);
+        startActivity(i);
+    	
+    	} 
+  
+    public void imageClick5(View view) {  
+  	  //Implement image click function  
+  	
+    	 // selected item
+        String url = url4.toString();
+
+        // Launching new Activity on selecting single List Item
+        Intent i = new Intent(getApplicationContext(), ImagesActivity.class);
+        // sending data to new activity
+        i.putExtra("url", url);
+        startActivity(i);
+    	
+    	} 
+  
+    public void imageClick6(View view) {  
+  	  //Implement image click function  
+  	
+    	 // selected item
+        String url = url6.toString();
+
+        // Launching new Activity on selecting single List Item
+        Intent i = new Intent(getApplicationContext(), ImagesActivity.class);
+        // sending data to new activity
+        i.putExtra("url", url);
+        startActivity(i);
+    	
+    	} 
+  
+    public void imageClick7(View view) {  
+  	  //Implement image click function  
+  	
+    	 // selected item
+        String url = url7.toString();
+
+        // Launching new Activity on selecting single List Item
+        Intent i = new Intent(getApplicationContext(), ImagesActivity.class);
+        // sending data to new activity
+        i.putExtra("url", url);
+        startActivity(i);
+    	
+    	} 
+  
+    public void imageClick8(View view) {  
+  	  //Implement image click function  
+  	
+    	 // selected item
+        String url = url8.toString();
+
+        // Launching new Activity on selecting single List Item
+        Intent i = new Intent(getApplicationContext(), ImagesActivity.class);
+        // sending data to new activity
+        i.putExtra("url", url);
+        startActivity(i);
+    	
+    	} 
+  
     private class DownloadWebPageTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -157,7 +237,7 @@ public class HavaintoActivity extends Activity {
         	        JSONObject jo1=null;
         	        JSONArray ja;
         	        String thumbnails="";
-        	        String images="";
+        	        JSONArray images=null;
         	        
         			try {
         			     jo = new JSONObject(result);
@@ -171,18 +251,18 @@ public class HavaintoActivity extends Activity {
         	             TextView havaitsija = (TextView) findViewById(R.id.havaitsija);
         	             String team=jo1.getString("team");
         	             if (!team.equals("")) team=", "+team;
-        	             havaitsija.setText(jo1.getString("user")+team);
+        	             havaitsija.setText(jo1.getJSONArray("user").getString(0)+team);
         	             TextView havainto = (TextView) findViewById(R.id.havainto);
         	             havainto.setText(jo1.getString("description"));
         	             TextView ttiedot = (TextView) findViewById(R.id.ttiedot);
         	             ttiedot.setText(jo1.getString("equipment"));
         	             TextView copyright = (TextView) findViewById(R.id.copyright);
-        	             copyright.setText("(c): "+jo1.getString("user"));
+        	             copyright.setText("(c): "+jo1.getJSONArray("user").getString(0));
         	             TextView aikajapaikka = (TextView) findViewById(R.id.aikajapaikka);
         	             aikajapaikka.setText(jo1.getString("start")+" "+jo1.getString("city"));
         			
         	             thumbnails= jo1.getString("thumbnails");
-        	             images= jo1.getString("images");
+        	             images= jo1.getJSONArray("images");
         	             
         			} catch (JSONException e1) {
         					// TODO Auto-generated catch block
@@ -196,55 +276,57 @@ public class HavaintoActivity extends Activity {
         		       String[] th;
         		       String delimiter = ",";
         		       /* given string will be split by the argument delimiter provided. */
-        		       th = thumbnails.split(delimiter);
-        		       
+        		      // th = thumbnails.split(delimiter);
+        		     //th = images.split(delimiter.toString());
+        		     
+          		       
         		       /* given string will be split by the argument delimiter provided. */
-        		       image = images.split(delimiter);
+        		      // image = images.split(delimiter);
         		       
-        		       URL url1 = null;
-        		       URL url2 = null;
-        		       URL url3 = null;
-        		       URL url4 = null;
-         				
+        				
         		       	try {
-        		       		if (th.length==1) {
-       						if(!th[0].equals("")) {
-       							url1 = new URL(th[0]);
-       							Log.v("url1", th[0]);
-
-       							new DownloadFilesTask().execute(url1);	
-       						 	}
-      						}
-        		       		if (th.length==2) {
-        		       			Log.v("url1", th[0]);
-               		    		url1 = new URL(th[0]);
-               		    		Log.v("url2", th[1]);
-               		    		url2 = new URL(th[1]);
-          						new DownloadFilesTask().execute(url1,url2);
-                 		       	 } 
-        		       		if (th.length==3) {
-        		       			Log.v("url1", th[0]);
-               		    		url1 = new URL(th[0]);
-               		    		Log.v("url2", th[1]);
-               		    		url2 = new URL(th[1]);
-               		    		Log.v("url3", th[2]);
-                   		    	url3 = new URL(th[2]);
-          							new DownloadFilesTask().execute(url1,url2,url3);
-                 		       	 } 
-        		       		if (th.length>3) {
-        		       			Log.v("url1", th[0]);
-               		    		url1 = new URL(th[0]);
-               		    		Log.v("url2", th[1]);
-               		    		url2 = new URL(th[1]);
-               		    		Log.v("url3", th[2]);
-                   		    	url3 = new URL(th[2]);
-                   		    	Log.v("url4", th[3]);
-                   		    	url4 = new URL(th[3]);
-          							new DownloadFilesTask().execute(url1,url2,url3,url4);
-                 		       	 } 
-             		       	 
-        		       	 
-					} catch (MalformedURLException e) {
+        		       		if (images.length()>0) {
+   							    url1 = images.optString(0);
+//   						        new DownloadFilesTask().execute(url1);
+         				          Picasso.with(getApplicationContext()).load(url1).into(image1);
+            		       		} 
+        		       		if (images.length()>1) {
+   							    url2 = images.optString(1);
+//   						        new DownloadFilesTask().execute(url1);
+         				          Picasso.with(getApplicationContext()).load(url2).into(image2);
+            		       		} 
+        		       		if (images.length()>2) {
+   							    url3 = images.optString(2);
+//   						        new DownloadFilesTask().execute(url1);
+         				          Picasso.with(getApplicationContext()).load(url3).into(image3);
+            		       		} 
+        		       		if (images.length()>3) {
+   							    url4 = images.optString(3);
+//   						        new DownloadFilesTask().execute(url1);
+         				          Picasso.with(getApplicationContext()).load(url4).into(image4);
+            		       		} 
+        		       		if (images.length()>4) {
+   							    url5 = images.optString(4);
+//   						        new DownloadFilesTask().execute(url1);
+         				          Picasso.with(getApplicationContext()).load(url5).into(image5);
+            		       		} 
+        		       		if (images.length()>5) {
+   							    url6 = images.optString(5);
+//   						        new DownloadFilesTask().execute(url1);
+         				          Picasso.with(getApplicationContext()).load(url6).into(image6);
+            		       		} 
+        		       		if (images.length()>6) {
+   							    url7 = images.optString(6);
+//   						        new DownloadFilesTask().execute(url1);
+         				          Picasso.with(getApplicationContext()).load(url7).into(image7);
+            		       		} 
+        		       		if (images.length()>7) {
+   							    url8 = images.optString(7);
+//   						        new DownloadFilesTask().execute(url1);
+         				          Picasso.with(getApplicationContext()).load(url8).into(image8);
+            		       		} 
+            		       	 
+					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
@@ -296,9 +378,25 @@ public class HavaintoActivity extends Activity {
         		image3.setImageBitmap(bitmap[2]);
         		image3.setClickable(true);
         	}
-        	if (result>3) {
+         	if (result>3) {
         		image4.setImageBitmap(bitmap[3]);
         		image4.setClickable(true);
+        	}
+         	if (result>4) {
+        		image5.setImageBitmap(bitmap[4]);
+        		image5.setClickable(true);
+        	}
+         	if (result>5) {
+        		image6.setImageBitmap(bitmap[5]);
+        		image6.setClickable(true);
+        	}
+         	if (result>6) {
+        		image7.setImageBitmap(bitmap[6]);
+        		image7.setClickable(true);
+        	}
+         	if (result>7) {
+        		image8.setImageBitmap(bitmap[7]);
+        		image8.setClickable(true);
         	}
         	
         	
@@ -366,7 +464,7 @@ public class HavaintoActivity extends Activity {
         	        String line;
         	        JSONObject jo;
         	        JSONObject jo1=null;
-        	        JSONArray ja;
+        	        JSONArray ja,ju;
         	        String thumbnails="";
         	        String images="";
         	        
@@ -378,6 +476,8 @@ public class HavaintoActivity extends Activity {
        			         	 String kommentit="";
        			         	 for (int i = ja.length(); i > 0; i--) {
        			         		jo1 = (JSONObject) ja.get(i-1);
+     // 			         		ju=jo1.getJSONArray("user");
+     //  			         		kommentit+=ju.get(0)+": "+jo1.getString("text")+"\n\n";
        			         		kommentit+=jo1.getString("user")+": "+jo1.getString("text")+"\n\n";
        			         		}
        			         	 TextView otsikko = (TextView) findViewById(R.id.kommentit);

@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 	 
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -27,6 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.squareup.picasso.Picasso;
 
 	import android.view.MenuItem;
 
@@ -47,10 +49,14 @@ import android.widget.Toast;
 
 		JSONObject jo1;
 		JSONArray ja;
+		JSONArray users;
 		Context context;
 	 	String[] values=null;
 	 	boolean[] comment=null;
 	 	boolean[] kuvat=null;
+	 	String[] thumbnails=null;
+	 	Integer[] kuvia;
+	 	Integer[] kommentit;
 	 	 private LinearLayout linProgressBar;
 	     
 			
@@ -69,7 +75,9 @@ import android.widget.Toast;
 	        
 	   //     setListAdapter(new ArrayAdapter(this, R.layout.list_item, this.fetchObservations()));       
 	            DownloadWebPageTask task = new DownloadWebPageTask();
-	            task.execute(new String[] { "http://www.ursa.fi/~obsbase/search_2.php?format=json&limit=50" });
+//	            task.execute(new String[] { "http://www.ursa.fi/~obsbase/search_2.php?format=json&limit=50" });
+//	            task.execute(new String[] { "http://www.taivaanvahti.fi/app/api/search.php?format=json&limit=100&orderby=created" });
+	            task.execute(new String[] { "http://www.taivaanvahti.fi/app/api/search.php?format=json&limit=100&orderby=start" });
 	        
 	        ListView lv = getListView();
 	        
@@ -109,19 +117,35 @@ import android.widget.Toast;
 	    	View row=super.getView(position, convertView, parent);
 	    	ImageView cameraicon=(ImageView)row.findViewById(R.id.icon);
 	    	ImageView commenticon=(ImageView)row.findViewById(R.id.icon2);
+	    	ImageView thumbnail=(ImageView)row.findViewById(R.id.list_image);
+	    	TextView imagecount=(TextView)row.findViewById(R.id.imagecount);
+	    	TextView commentcount=(TextView)row.findViewById(R.id.commentcount);
+	    	String url=thumbnails[position];
+	    	if(!thumbnails[position].equals("")) {
+	    	  Picasso.with(getApplicationContext()).load(url).into(thumbnail);
+	    	  imagecount.setText(kuvia[position].toString());
+	    	}
+	    	else {
+	    		Picasso.with(getApplicationContext()).load(R.drawable.blankicon).into(thumbnail);
+	    		  imagecount.setText("");
+	  	    		}
+	     	
 	 	   // 	TextView com=(TextView)row.findViewById(R.id.comments);
 	   // 	com.setText(comment[position]);
 	     	if (kuvat[position]) {
 		    	cameraicon.setImageResource(R.drawable.ico_camera_sm);
+		    	  imagecount.setText(kuvia[position].toString());
 		    	}
 		    	else {
 		    	cameraicon.setImageResource(R.drawable.blankicon);
 		    	}
 	     	if (comment[position]) {
 		    	commenticon.setImageResource(R.drawable.comment_bubble);
+		    	  commentcount.setText(kommentit[position].toString());
 		    	}
 		    	else {
 		    	commenticon.setImageResource(R.drawable.blankicon);
+		    	  commentcount.setText("");
 		    	}
 		    	return(row);
 	    	}
@@ -152,20 +176,24 @@ import android.widget.Toast;
 	        }
 
 	        String fmtaika(String aika) throws ParseException {
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = formatter.parse(aika);
                 Date now = new Date();
-                if(now.getDate()==date.getDate()&&now.getMonth()==date.getMonth()&&now.getYear()==date.getYear())
-                    return ""+date.getHours()+":"+(date.getMinutes()<10?"0":"")+date.getMinutes();
-                else
-                    return ""+date.getDate()+"."+(date.getMonth()+1)+"."+(date.getYear()+1900);
+                SimpleDateFormat format = new SimpleDateFormat("d.M.yyyy H:mm");
+                String DateToStr = format.format(date);
+//                System.out.println(DateToStr);
+                return DateToStr;
+//                if(now.getDate()==date.getDate()&&now.getMonth()==date.getMonth()&&now.getYear()==date.getYear())
+//                    return ""+date. getHours()+":"+(date.getMinutes()<10?"0":"")+date.getMinutes();
+//                else
+//                    return ""+date.getDate()+"."+(date.getMonth()+1)+"."+(date.getYear()+1900);
                 }
 	        
 	        
 	        @Override
 	        protected void onPostExecute(String result) {
 	             	String json = result;
-	             	String images="";
+	             	JSONArray images=null;
 	             	String comments="";
 	             	String aika="";
 	             	String city="";
@@ -174,32 +202,49 @@ import android.widget.Toast;
 	        	
 	             	if(!result.equals("")) {
 	        	try {
+	        		String u="";
 	            JSONObject jo = new JSONObject(json);
 	            ja = jo.getJSONArray("observation");
 	            comment = new boolean[ja.length()];
 	            values = new String[ja.length()];
 		        kuvat = new boolean[ja.length()];
+		        kuvia = new Integer[ja.length()];
+		        kommentit = new Integer[ja.length()];
+		        thumbnails = new String[ja.length()];
 	            for (int i = 0; i < ja.length(); i++) {
 	                  jo1 = (JSONObject) ja.get(i);
-	                  images=jo1.getString("images");
-	                  if(!images.equals("")) {
-	                	  icount=images.split(",").length;
-	                  } else
-	                	  icount=0;
+	                  images=jo1.getJSONArray("images");
+	                  icount=images.length();
 	                  today.setToNow();
 	                  aika=fmtaika(jo1.getString("start"));
 	                  if(!jo1.getString("city").equals("")) {
-	                	  city = " - "+jo1.getString("city");
+	                	  city = jo1.getString("city");
 	                  } else
 	                	  city="";
 //	                  values[i]=jo1.getString("title")+"\n"+aika+jo1.getString("city")+"\n"+jo1.getString("user")+" "+jo1.getString("team")+" (kuvia "+icount+")";
-	                  values[i]=aika+" "+jo1.getString("title")+"\n"+jo1.getString("user")+city;
+	                  users=jo1.getJSONArray("user");
+	                  u=users.getString(0);
+	                  if(users.length()>1) {
+	                	  for (int j=1;j<users.length();j++) {
+	                		  u=u+","+users.getString(j);
+	                	  }
+	                  }
+	                  values[i]=aika+"\n"+jo1.getString("title")+"\n"+u+"\n"+city;
 	            	  kuvat[i]=icount>0;
+	            	  kuvia[i]=icount;
 	                  comments=jo1.getString("comments");
 	                  if(comments.equals("0")) {
 		            	  comment[i]=false;
-	                  }else
-	            	  comment[i]=true;
+	                  }else 
+	                	  comment[i]=true;
+	                  kommentit[i]=jo1.getInt("comments");
+	                  if(jo1.getJSONArray("thumbnails").length()>0) {
+	                		  thumbnails[i]=jo1.getJSONArray("thumbnails").getString(0);
+	                  } else
+	                  { 
+	                	  thumbnails[i]="";
+	                  
+	                  }
 	            }
 	            	  
 	        	
